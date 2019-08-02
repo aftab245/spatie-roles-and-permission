@@ -23,8 +23,8 @@
 
     @endforeach
     <br>
-    {{ Form::submit('Update Role', array('class' => 'btn btn-primary')) }}
-
+    {{ Form::submit('Update Role ( '.$role->name.' )', array('class' => 'btn btn-warning')) }}
+    <a href="{{ route('roles.index') }}" class="btn btn-primary">Back</a>
     {{ Form::close() }}    
 </div>
 

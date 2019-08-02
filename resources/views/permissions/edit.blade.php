@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class='col-lg-4 col-lg-offset-4'>
+<div class='col-lg-6 col-lg-offset-3'>
 
     <h1><i class='fa fa-key'></i> Edit {{$permission->name}}</h1>
     <br>
@@ -15,8 +15,8 @@
         {{ Form::text('name', null, array('class' => 'form-control')) }}
     </div>
     <br>
-    {{ Form::submit('Update Permission', array('class' => 'btn btn-primary')) }}
-
+    {{ Form::submit('Update Permission ( '.$permission->name.' )', array('class' => 'btn btn-warning')) }}
+    <a class="btn btn-primary" href="{{ route('permissions.index') }}"> Back</a>
     {{ Form::close() }}
 
 </div>

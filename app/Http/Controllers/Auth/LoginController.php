@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
+use App\Oauth;
 
 class LoginController extends Controller
 {
@@ -68,13 +71,8 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        try{
-            $user = Socialite::driver('facebook')->user();
-        } catch (\Exception $e) {
-            return redirect('/login')->with('status', 'Something went wrong or You have rejected the app!');
-        }
         $userSocialite = Socialite::driver('facebook')
-        ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
+        ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->stateless()
         ->user();
         $userSocialite->name;
         // dd($userSocialite);
@@ -88,34 +86,26 @@ class LoginController extends Controller
     }
 
 
-
+    // Obtain the user information from google.
     public function Provider()
     {
         return Socialite::driver('google')->redirect();        
     }
-
-    /**
-     * Obtain the user information from gooogle.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function Callback()
     {
-        $user = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
-        dd($user);
-        return [$user->name,$user->email,$user->token];
+        $userdata = Socialite::driver('google')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();
+        // dd($userdata);
+        $user = new Oauth();
+        $user->token = $userdata->token;
+        $user->save();
+        return redirect()->route('posts.index');
+        
     }
 
     public function twitterProvider()
     {
         return Socialite::driver('twitter')->redirect();
     }
-
-    /**
-     * Obtain the user information from gooogle.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function twitterCallback()
     {
         $user = Socialite::driver('twitter')->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))->user();

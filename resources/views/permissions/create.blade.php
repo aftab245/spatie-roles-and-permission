@@ -25,7 +25,7 @@
         @endforeach
     @endif
     <br>
-    {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Save permission', array('class' => 'btn btn-primary')) }}
     <a class="btn btn-primary" href="{{ route('permissions.index') }}"> Back</a>
     {{ Form::close() }}
 

@@ -41,7 +41,7 @@
 
     </div>
 
-    {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Save user', array('class' => 'btn btn-primary')) }}
     <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
     {{ Form::close() }}
 

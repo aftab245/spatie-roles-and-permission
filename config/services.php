@@ -35,9 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
     'facebook' => [
-        'client_id' => '700018170451991',  ///find id from facebook
-        'client_secret' => '6adf51b0ee01c701b808e62b7dab66f7',   ///find secret from facebook
-        // 'redirect' => 'http://localhost/laravelAuth/public/login/facebook/callback',
+        'client_id' => '352263472373776',  
+        'client_secret' => '5b23f2c8ea2508c36039828e8c0cafc5', 
         'redirect' => 'http://localhost:8000/login/facebook/callback',
 
     ],

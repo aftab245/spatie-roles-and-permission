@@ -44,7 +44,7 @@ window.Laravel = {!! json_encode(['csrfToken' =>csrf_token(),])!!};
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/') }}">Home</a></li>
                         @if (!Auth::guest())
-                        <li><a href="{{ route('posts.create') }}">New Post</a></li>
+                        <li><a href="{{ route('posts.create') }}">New Post </a></li>
                         @endif
                     </ul>
 

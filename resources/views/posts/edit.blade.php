@@ -20,9 +20,8 @@
             {{ Form::label('image', 'Image') }}
             {{ Form::file('image', array('class' => 'form-control')) }}
             <img src="/storage/images/{{ $post->image }}" style="height:120px;width:120px"><br>
-
-            {{ Form::submit('Update post', array('class' => 'btn btn-primary')) }}
-
+            {{ Form::submit('Update post ( '.$post->title.' )', array('class' => 'btn btn-primary')) }}
+            <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
             {{ Form::close() }}
     </div>
     </div>

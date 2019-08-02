@@ -42,7 +42,7 @@
 
     </div>
 
-    {{ Form::submit('Update', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Update ( '.$user->name.' )', array('class' => 'btn btn-warning')) }}
     <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
     {{ Form::close() }}
 

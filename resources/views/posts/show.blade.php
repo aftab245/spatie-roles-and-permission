@@ -6,9 +6,9 @@
 
 <div class="container">
     <div class="col-lg-6 col-lg-offset-3">
-    <h1>{{ $post->title }}</h1>
+    <h1>{{ ucfirst($post->title) }}</h1>
     <hr>
-    <img src="/storage/images/{{ $post->image }}" style="height:400px;width:400px">
+    <img src="/storage/images/{{ $post->image }}" style="height:480px;width:100%">
     <hr>
     {!! Form::open(['method' => 'DELETE', 'route' => ['posts.destroy', $post->id] ]) !!}
     <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
